@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://www.cornify.com/js/cornify.js">
+    </script>
+    <style>
+        body {
+            background: #00537e;
+            background: -moz-linear-gradient(to bottom, #00537e 0%, #3aa17e 100%);
+            background: -webkit-linear-gradient(to bottom, #00537e 0%, #3aa17e 100%);
+            background: linear-gradient(to bottom, #00537e 0%, #3aa17e 100%);
+        }
+
+        #div1 {
+            position: absolute;
+            /* background-color: indigo; */
+            width: 50%;
+            text-align: center;
+            height: 37vh;
+            top: 25%;
+            left: 25%;
+            color: whitesmoke;
+        }
+
+        input {
+            padding: 3px 0px;
+            width: 369px;
+
+        }
+
+        button {
+            height: 60px;
+            width: 165px;
+            border: none;
+            background: darkslategray
+        }
+        input:focus{
+           height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>Enter Any Code in input And Click Send Button AND Press Alphabets for code</h1>
+        <input id="code" placeholder="enter code"><br><br>
+        <button onclick="code()">send code</button>
+    </div>
+    <script>
+        function code() {
+            var id = document.getElementById("code").value
+            var pressed = [];
+            var scretCode = id;
+            document.getElementById("code").value = "";
+            window.addEventListener("keyup", (e) => {
+                console.log(e.key);
+                pressed.push(e.key);
+                pressed.splice(-scretCode.length - 1, pressed.length - scretCode.length);
+                if (pressed.join("").includes(scretCode)) {
+                    console.log("CONGRATS");
+                    cornify_add();
+                }
+                console.log(pressed);
+            })
+        }
+
+    </script>
+</body>
+
+</html>
